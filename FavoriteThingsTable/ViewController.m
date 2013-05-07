@@ -44,6 +44,8 @@
         [self.favoriteThings addObject:self.textField.text];
         self.textField.text = nil;
         
+        
+        
         NSIndexPath *path = [NSIndexPath indexPathForRow:(self.favoriteThings.count - 1) inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -53,7 +55,10 @@
 - (IBAction)RemoveFavoriteThingWithButton:(id)sender
 {
     [self.favoriteThings removeLastObject];
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:(self.favoriteThings.count - 1) inSection:0];
+    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (IBAction)ReverseOrderWithButton:(id)sender
