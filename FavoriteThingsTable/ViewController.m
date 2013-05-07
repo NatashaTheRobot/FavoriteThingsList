@@ -43,7 +43,9 @@
     if (![self.textField.text isEqualToString:@""]) {
         [self.favoriteThings addObject:self.textField.text];
         self.textField.text = nil;
-        [self.tableView reloadData];
+        
+        NSIndexPath *path = [NSIndexPath indexPathForRow:(self.favoriteThings.count - 1) inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     }
     
 }
